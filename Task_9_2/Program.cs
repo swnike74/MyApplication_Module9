@@ -2,9 +2,33 @@
 {
     internal class Program
     {
+        public class myException : Exception
+        {
+            public myException()
+            { }
+
+            public myException (string message) : base(message)
+            { }
+        }
+
+
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            myException[] myExceptions = new myException[5];
+
+            try
+            {
+                Console.WriteLine("Блок try начал работу");
+                throw new myException("1");
+            }
+            catch (Exception ex) when (ex is myException)
+            {
+                Console.WriteLine("exception 1");
+                Console.WriteLine(ex.Message);
+            }
+
+
         }
     }
 }
