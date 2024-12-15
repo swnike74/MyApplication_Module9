@@ -1,33 +1,44 @@
 ﻿namespace Task_9_2
 {
     internal class Program
-    {
-        public class myException : Exception
-        {
-            public myException()
-            { }
-
-            public myException (string message) : base(message)
-            { }
-        }
-
+    {/// <summary>
+     /// Создайте консольное приложение, в котором будет происходить сортировка списка фамилий из пяти человек.
+     /// Сортировка должна происходить при помощи события.
+     /// Сортировка происходит при введении пользователем либо числа 1 (сортировка А-Я),
+     /// либо числа 2 (сортировка Я-А).
+     /// Дополнительно реализуйте проверку введённых данных от пользователя через конструкцию TryCatchFinally
+     /// с использованием собственного типа исключения.
+     /// </summary>
+        
 
 
         static void Main(string[] args)
         {
-            myException[] myExceptions = new myException[5];
-
-            try
+            string[] ListofPerson =
             {
-                Console.WriteLine("Блок try начал работу");
-                throw new myException("1");
-            }
-            catch (Exception ex) when (ex is myException)
+                "Иванов",
+                "Петров",
+                "Афанасьев",
+                "Сидоров",
+                "Естафьев"
+            };
+            string stemp = "";
+            
+            for (int i = 0; i < ListofPerson.Length; i++)
             {
-                Console.WriteLine("exception 1");
-                Console.WriteLine(ex.Message);
+                for (int j = i + 1; j < ListofPerson.Length; j++)
+                {
+                    char[] bytesj = ListofPerson[j].ToCharArray();
+                    char[] bytesi = ListofPerson[i].ToCharArray();
+                    if ( bytesi[0] > bytesj[0] )
+                    {
+                        stemp = ListofPerson[i];
+                        ListofPerson[i] = ListofPerson[j];
+                        ListofPerson[j] = stemp;
+                    }
+                }
             }
-
+            int x = 0;
 
         }
     }
