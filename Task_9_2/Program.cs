@@ -22,15 +22,24 @@
                 "Сидоров",
                 "Естафьев"
             };
-            string stemp = "";
+
+           
             
+           
+
+        }
+
+        public static void sort_forward(string[] ListofPerson)
+        {
+            string stemp = "";
+
             for (int i = 0; i < ListofPerson.Length; i++)
             {
                 for (int j = i + 1; j < ListofPerson.Length; j++)
                 {
                     char[] bytesj = ListofPerson[j].ToCharArray();
                     char[] bytesi = ListofPerson[i].ToCharArray();
-                    if ( bytesi[0] > bytesj[0] )
+                    if (bytesi[0] > bytesj[0])
                     {
                         stemp = ListofPerson[i];
                         ListofPerson[i] = ListofPerson[j];
@@ -38,8 +47,26 @@
                     }
                 }
             }
-            int x = 0;
+        }
 
+        public static void sort_backward(string[] ListofPerson)
+        {
+            string stemp = "";
+
+            for (int i = 0; i < ListofPerson.Length; i++)
+            {
+                for (int j = i + 1; j < ListofPerson.Length; j++)
+                {
+                    char[] bytesj = ListofPerson[j].ToCharArray();
+                    char[] bytesi = ListofPerson[i].ToCharArray();
+                    if (bytesi[0] < bytesj[0])
+                    {
+                        stemp = ListofPerson[i];
+                        ListofPerson[i] = ListofPerson[j];
+                        ListofPerson[j] = stemp;
+                    }
+                }
+            }
         }
     }
 }
