@@ -1,4 +1,6 @@
-﻿namespace Task_9_2
+﻿using System.Runtime.CompilerServices;
+
+namespace Task_9_2
 {
     internal class Program
     {/// <summary>
@@ -9,8 +11,28 @@
      /// Дополнительно реализуйте проверку введённых данных от пользователя через конструкцию TryCatchFinally
      /// с использованием собственного типа исключения.
      /// </summary>
-        
 
+        
+        public class NumberReader
+        {
+            public delegate void NumberEnteredDelegate(int num);
+            public event NumberEnteredDelegate? NumberEnteredEvent;
+            
+            void Read()
+            {
+                Console.WriteLine();
+                Console.WriteLine("Enter digit 1 for Forward sorting or 2 for backward sorting");
+                int number = Convert.ToInt32(Console.ReadLine());
+                if(number != 1 && number != 2) throw new FormatException();
+
+            }
+
+            NumberEntered(number);
+            protected virtual void NumberEntered(int num)
+            {
+                NumberEnteredEvent?.Invoke(num);
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -23,8 +45,15 @@
                 "Естафьев"
             };
 
-           
-            
+            NumberReader nr = new NumberReader();
+            try
+            {
+
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("Введено неверное значение");
+            }
            
 
         }
